@@ -21,6 +21,8 @@
     <sprite>sprites\spr_Waterfall</sprite>
     <sprite>sprites\spr_Fly</sprite>
     <sprite>sprites\spr_CaveTorch</sprite>
+    <sprite>sprites\spr_ButtonPlate</sprite>
+    <sprite>sprites\spr_ButtonBlock</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -50,9 +52,11 @@
       <object>objects\obj_Block1</object>
       <object>objects\obj_BlockParent</object>
       <object>objects\obj_Door</object>
+      <object>objects\obj_ButtonBlock</object>
     </objects>
     <object>objects\obj_Fly</object>
-    <object>objects\obj_cMain</object>
+    <object>objects\obj_cCave</object>
+    <object>objects\obj_ButtonPlate</object>
   </objects>
   <timelines name="timelines"/>
   <rooms name="rooms">
@@ -60,6 +64,7 @@
     <room>rooms\rm_Main</room>
     <room>rooms\rm_HouseFriendlyA</room>
     <room>rooms\rm_CaveEntrance1</room>
+    <room>rooms\rm_Cave1A</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

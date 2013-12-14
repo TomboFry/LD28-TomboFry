@@ -34,6 +34,7 @@ instance_deactivate_all(true);
 instance_activate_object(obj_Player);
 instance_activate_object(obj_QuestTrigger);
 instance_activate_region(view_xview[0] - 128, view_yview - 128, view_wview[0] + 128, view_hview[0] + 128, true);
+depth = -100000;
 </string>
           </argument>
         </arguments>
@@ -56,7 +57,7 @@ instance_activate_region(view_xview[0] - 128, view_yview - 128, view_wview[0] + 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == rm_CaveEntrance1){
+            <string>if(room == rm_CaveEntrance1 || room = rm_Cave1A){
     draw_sprite_ext(spr_CaveTorch,0,view_xview[0],view_yview[0],2,2,0,-1,1);
 }
 </string>

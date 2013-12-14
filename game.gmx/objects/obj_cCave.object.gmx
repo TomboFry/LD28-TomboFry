@@ -4,11 +4,11 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,20 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(vk_escape)){
-    game_end();
+            <string>repeat(10){
+    instance_create(352 + random(32),156 + random(32),obj_Fly);
 }
-if(keyboard_check_pressed(vk_f4)){
-    window_set_fullscreen(!window_get_fullscreen());
-}
-
-with (all){
-    if(other != obj_PlayerCamera){
-        depth = -y;
-    }
-}
-x = obj_Player.x;
-y = obj_Player.y;
+instance_destroy();
 </string>
           </argument>
         </arguments>

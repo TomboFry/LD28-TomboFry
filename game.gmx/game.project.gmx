@@ -11,9 +11,13 @@
     <sprite>sprites\spr_PlayerHoldingWeapon</sprite>
     <sprite>sprites\spr_QuestTrigger</sprite>
     <sprite>sprites\spr_Block</sprite>
+    <sprite>sprites\spr_BlockSmall</sprite>
+    <sprite>sprites\spr_Door</sprite>
+    <sprite>sprites\spr_Water</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -27,9 +31,13 @@
     <object>objects\obj_BlockParent</object>
     <object>objects\obj_Block1</object>
     <object>objects\obj_cQuest</object>
+    <object>objects\obj_Block2</object>
+    <object>objects\obj_Door</object>
+    <object>objects\obj_Water</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rm_Beginning</room>
+    <room>rooms\rm_Start</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

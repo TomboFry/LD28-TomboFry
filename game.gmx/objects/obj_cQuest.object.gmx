@@ -40,8 +40,8 @@ q = ds_grid_create(4,2);
 
 ds_grid_add(q, 0, 0, "Test Quest");
 ds_grid_add(q, 1, 0, "Go to the trigger thingy");
-ds_grid_add(q, 2, 0, 160);
-ds_grid_add(q, 3, 0, 168);
+ds_grid_add(q, 2, 0, 1088);
+ds_grid_add(q, 3, 0, 684);
 
 ds_grid_add(q, 0, 1, "Behind the wall");
 ds_grid_add(q, 1, 1, "This time it's behind a wall!");

@@ -55,21 +55,23 @@ pspeed = 1.5;
             <kind>1</kind>
             <string>/// PLAYER MOVEMENT
 
-if(keyboard_check(vk_left) &amp;&amp; place_free(x-2,y)){
-    x -= pspeed;
-    dirx = -1;
-}
-if(keyboard_check(vk_right) &amp;&amp; place_free(x+2,y)){
-    x += pspeed;
-    dirx = 1;
-}
-if(keyboard_check(vk_up) &amp;&amp; place_free(x,y-2)){
-    y -= pspeed;
-    diry = -1;
-}
-if(keyboard_check(vk_down) &amp;&amp; place_free(x,y+2)){
-    y += pspeed;
-    diry = 1;
+if(obj_Controller.showQuests == false){
+    if(keyboard_check(vk_left) &amp;&amp; place_free(x-2,y)){
+        x -= pspeed;
+        dirx = -1;
+    }
+    if(keyboard_check(vk_right) &amp;&amp; place_free(x+2,y)){
+        x += pspeed;
+        dirx = 1;
+    }
+    if(keyboard_check(vk_up) &amp;&amp; place_free(x,y-2)){
+        y -= pspeed;
+        diry = -1;
+    }
+    if(keyboard_check(vk_down) &amp;&amp; place_free(x,y+2)){
+        y += pspeed;
+        diry = 1;
+    }
 }
 </string>
           </argument>

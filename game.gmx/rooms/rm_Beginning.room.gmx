@@ -7,7 +7,7 @@
   <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code></code>
@@ -80,8 +80,8 @@
     <instance objName="obj_Player" x="80" y="72" name="inst_99247A1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlayerCamera" x="112" y="60" name="inst_DDA83601" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Controller" x="0" y="0" name="inst_5F30608F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="64" y="120" name="inst_BEA0FAB3" locked="0" code="nextroom = rm_Start;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="80" y="120" name="inst_09D865CC" locked="0" code="nextroom = rm_Start;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="64" y="120" name="inst_BEA0FAB3" locked="0" code="nextroom = rm_Main;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="80" y="120" name="inst_09D865CC" locked="0" code="nextroom = rm_Main;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Tileset" x="32" y="96" w="16" h="12" xo="0" yo="0" id="10000470" name="inst_738DB7AA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -14,6 +14,8 @@
     <sprite>sprites\spr_BlockSmall</sprite>
     <sprite>sprites\spr_Door</sprite>
     <sprite>sprites\spr_Water</sprite>
+    <sprite>sprites\spr_House1</sprite>
+    <sprite>sprites\spr_House2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -34,10 +36,13 @@
     <object>objects\obj_Block2</object>
     <object>objects\obj_Door</object>
     <object>objects\obj_Water</object>
+    <object>objects\obj_House1</object>
+    <object>objects\obj_House2</object>
+    <object>objects\obj_HouseParent</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Beginning</room>
-    <room>rooms\rm_Start</room>
+    <room>rooms\rm_Main</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -19,6 +19,8 @@
     <sprite>sprites\spr_Tree</sprite>
     <sprite>sprites\spr_Tree2</sprite>
     <sprite>sprites\spr_Waterfall</sprite>
+    <sprite>sprites\spr_Fly</sprite>
+    <sprite>sprites\spr_CaveTorch</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -49,12 +51,15 @@
       <object>objects\obj_BlockParent</object>
       <object>objects\obj_Door</object>
     </objects>
+    <object>objects\obj_Fly</object>
+    <object>objects\obj_cMain</object>
   </objects>
   <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\rm_Beginning</room>
     <room>rooms\rm_Main</room>
     <room>rooms\rm_HouseFriendlyA</room>
+    <room>rooms\rm_CaveEntrance1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -16,6 +16,7 @@
     <sprite>sprites\spr_Water</sprite>
     <sprite>sprites\spr_House1</sprite>
     <sprite>sprites\spr_House2</sprite>
+    <sprite>sprites\spr_Tree</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -39,6 +40,7 @@
     <object>objects\obj_House1</object>
     <object>objects\obj_House2</object>
     <object>objects\obj_HouseParent</object>
+    <object>objects\obj_Tree</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Beginning</room>

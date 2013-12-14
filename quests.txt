@@ -1,0 +1,10 @@
+Test Quest
+This is a test. Find the trigger
+672
+516
+0
+Friend's House
+Max wants to see you. Go to his house
+672
+516
+0

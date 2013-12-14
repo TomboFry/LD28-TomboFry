@@ -155,7 +155,7 @@ room_goto(other.nextroom);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == rm_Beginning){
+            <string>if(room == rm_Beginning || room = rm_HouseFriendlyA){
     y -= 4;
 } else if(room == rm_Main){
     y += 4;

@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_cQuest.quest++;
+            <string>obj_cQuest.doingQuest = true;
 instance_destroy();
 </string>
           </argument>

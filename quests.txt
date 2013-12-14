@@ -1,10 +1,21 @@
-Test Quest
-This is a test. Find the trigger
-672
-516
+The Beginning
+This is a really long description so hopefully what I have coded will work properly... I really hope it does.
+80
+84
+688
+588
 0
 Friend's House
 Max wants to see you. Go to his house
-672
-516
+688
+588
+712
+500
+0
+Transmission
+Find a radio device by the beach
+1232
+828
+736
+288
 0

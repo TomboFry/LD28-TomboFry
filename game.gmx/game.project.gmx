@@ -9,13 +9,24 @@
     <sprite>sprites\spr_Player</sprite>
     <sprite>sprites\spr_PlayerBack</sprite>
     <sprite>sprites\spr_PlayerHoldingWeapon</sprite>
+    <sprite>sprites\spr_QuestTrigger</sprite>
+    <sprite>sprites\spr_Block</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\fnt_Main</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_Player</object>
+    <object>objects\obj_Controller</object>
+    <object>objects\obj_PlayerCamera</object>
+    <object>objects\obj_QuestTrigger</object>
+    <object>objects\obj_BlockParent</object>
+    <object>objects\obj_Block1</object>
+    <object>objects\obj_cQuest</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

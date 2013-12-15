@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,55 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.cLeft[0] = gp_padl;
-global.cRight[0] = gp_padr;
-global.cUp[0] = gp_padu;
-global.cDown[0] = gp_padd;
-global.cJump[0] = gp_face1;
-global.cCancel[0] = gp_face2;
-global.cFire[0] = gp_shoulderr;
+            <string>text[0] = "Start";
+text[1] = "Options";
+text[2] = "Exit";
 
-global.cLeft[1] = gp_padl;
-global.cRight[1] = gp_padr;
-global.cUp[1] = gp_padu;
-global.cDown[1] = gp_padd;
-global.cJump[1] = gp_face1;
-global.cCancel[1] = gp_face2;
-global.cFire[1] = gp_shoulderr;
-
-global.cLeft[2] = gp_padl;
-global.cRight[2] = gp_padr;
-global.cUp[2] = gp_padu;
-global.cDown[2] = gp_padd;
-global.cJump[2] = gp_face1;
-global.cCancel[2] = gp_face2;
-global.cFire[2] = gp_shoulderr;
-
-global.cLeft[3] = gp_padl;
-global.cRight[3] = gp_padr;
-global.cUp[3] = gp_padu;
-global.cDown[3] = gp_padd;
-global.cJump[3] = gp_face1;
-global.cCancel[3] = gp_face2;
-global.cFire[3] = gp_shoulderr;
-
-global.gp[0] = false;
-global.gp[1] = false;
-global.gp[2] = false;
-global.gp[3] = false;
-
-global.p[0] = 0;
-global.p[1] = 0;
-global.p[2] = 0;
-global.p[3] = 0;
-
-
-global.c[0] = spr_PlayerA;
-global.cD[0] = spr_PlayerADead;
-
-global.c[1] = spr_PlayerB;
-global.cD[1] = spr_PlayerBDead;
-
+select = 0;
 </string>
           </argument>
         </arguments>
@@ -96,13 +52,67 @@ global.cD[1] = spr_PlayerBDead;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(vk_f4)){
-    window_set_fullscreen(!window_get_fullscreen());
+            <string>count = getControlNum();
+for(i = 0; i &lt; count; i++){
+    if(gamepad_button_check_pressed(i,global.cUp[i])){
+        if(select &gt; 0){
+            select--;
+        } else {
+            select = 2;
+        }
+    }
+    if(gamepad_button_check_pressed(i,global.cDown[i])){
+        if(select &lt; 2){
+            select++;
+        } else {
+            select = 0;
+        }
+    }
+    if(gamepad_button_check_pressed(i,global.cJump[i])){
+        if(select == 0){
+            room_goto(rm_CharacterSelect);
+        } else if(select == 1){
+            show_message("nope");
+        } else if(select == 2){
+            game_end();
+        }
+    }
 }
-if(keyboard_check_pressed(vk_escape)){
-    game_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_alpha(1);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
+draw_set_font(fnt_Large);
+for(i = 0; i &lt; 3; i++){
+    if(select == i){
+        dtext = "&gt; " + text[i] + " &lt;";
+    } else {
+        dtext = text[i];
+    }
+    draw_text(room_width/2,(room_height*0.25)+(i*24),dtext);
 }
-
 </string>
           </argument>
         </arguments>

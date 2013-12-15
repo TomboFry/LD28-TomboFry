@@ -126,7 +126,6 @@
     <instance objName="obj_Block8" x="80" y="160" name="inst_50895CB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="80" y="168" name="inst_D2323940" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cRoom" x="8" y="8" name="inst_0A800C4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_cMain" x="24" y="8" name="inst_BC370AF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="88" y="144" name="inst_3CAFA3B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="96" y="144" name="inst_BAB04FEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="104" y="144" name="inst_5DA33026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

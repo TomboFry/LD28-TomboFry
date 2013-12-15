@@ -39,6 +39,8 @@ dead = false;
 
 hit = false;
 hitcount = 0;
+
+hitlava = false;
 </string>
           </argument>
         </arguments>
@@ -102,6 +104,17 @@ if(hit){
         hit = false;
         hitcount = 0;
     }
+}
+if(place_meeting(x,y+2,obj_LavaBottom)){
+    if(hitlava == false){
+        hp -= 20;
+        if(hp &gt; 0){
+            vspeed = -7;
+        }
+        hitlava = true;
+    }
+} else {
+    hitlava = false;
 }
 
 

@@ -82,7 +82,7 @@ display_set_gui_size(320, 240);
             <kind>1</kind>
             <string>var gp_num = gamepad_get_device_count();
 count = getControlNum();
-//count = 3;
+count = global.howManyPlayers;
 if(count == 0){
     if(step &lt; room_speed*4){
         step += 1;

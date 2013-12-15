@@ -21,8 +21,12 @@
     <sprite>sprites\spr_Health</sprite>
     <sprite>sprites\spr_CharacterSelectUp</sprite>
     <sprite>sprites\spr_Controls</sprite>
+    <sprite>sprites\spr_Lava</sprite>
+    <sprite>sprites\spr_LavaBottom</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_Tileset</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\textPopup.gml</script>
@@ -46,6 +50,8 @@
       <objects name="Blocks">
         <object>objects\obj_Block8</object>
         <object>objects\obj_BlockParent</object>
+        <object>objects\obj_LavaTop</object>
+        <object>objects\obj_LavaBottom</object>
       </objects>
       <object>objects\obj_PlayerCamera</object>
       <object>objects\obj_Player</object>

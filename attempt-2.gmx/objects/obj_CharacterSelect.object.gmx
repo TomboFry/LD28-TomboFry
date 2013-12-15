@@ -113,7 +113,7 @@ for(i = 0; i &lt; global.howManyPlayers; i++){
         }
     }
 }
-if(playersDone == count){
+if(playersDone == global.howManyPlayers){
     room_goto(rm_Level1);
 }
 </string>

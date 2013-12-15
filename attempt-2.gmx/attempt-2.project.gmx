@@ -27,6 +27,11 @@
   <scripts name="scripts">
     <script>scripts\textPopup.gml</script>
     <script>scripts\getControlNum.gml</script>
+    <script>scripts\getKey.gml</script>
+    <script>scripts\getKeyNum.gml</script>
+    <script>scripts\getNumToKey.gml</script>
+    <script>scripts\saveSettings.gml</script>
+    <script>scripts\loadSettings.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Main</font>
@@ -55,6 +60,8 @@
       <object>objects\obj_CharacterSelect</object>
       <object>objects\obj_ChoosePlayerNum</object>
       <object>objects\obj_Controls</object>
+      <object>objects\obj_KeyConfig</object>
+      <object>objects\obj_KeyInput</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -64,6 +71,7 @@
     <room>rooms\rm_CharacterSelect</room>
     <room>rooms\rm_ChoosePlayers</room>
     <room>rooms\rm_Options</room>
+    <room>rooms\rm_KeyConfig</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

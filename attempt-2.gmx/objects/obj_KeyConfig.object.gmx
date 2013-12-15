@@ -25,11 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>text[0] = "Fullscreen: Nope";
-text[1] = "Music: Yep";
-text[2] = "SFX: Yep";
-text[3] = "Key Config";
-text[4] = "Back to main menu";
+            <string>text[0] = "Up: " + getKey(global.cUp[global.lastplayerpressed]);
+text[1] = "Down: " + getKey(global.cDown[global.lastplayerpressed]);
+text[2] = "Left: " + getKey(global.cLeft[global.lastplayerpressed]);
+text[3] = "Right: " + getKey(global.cRight[global.lastplayerpressed]);
+text[4] = "Action/Jump: " + getKey(global.cJump[global.lastplayerpressed]);
+text[5] = "Shoot: " + getKey(global.cFire[global.lastplayerpressed]);
+text[6] = "Back/Cancel: " + getKey(global.cCancel[global.lastplayerpressed]);
+text[7] = "Back to Options";
 
 select = 0;
 
@@ -62,52 +65,35 @@ xpos = 64;
     xpos = 0;
 }
 
-if(global.music){
-    text[1] = "Music: Yep";
-} else {
-    text[1] = "Music: Nope";
-}
+text[0] = "Up: " + getKey(global.cUp[global.lastplayerpressed]);
+text[1] = "Down: " + getKey(global.cDown[global.lastplayerpressed]);
+text[2] = "Left: " + getKey(global.cLeft[global.lastplayerpressed]);
+text[3] = "Right: " + getKey(global.cRight[global.lastplayerpressed]);
+text[4] = "Action/Jump: " + getKey(global.cJump[global.lastplayerpressed]);
+text[5] = "Shoot: " + getKey(global.cFire[global.lastplayerpressed]);
+text[6] = "Back/Cancel: " + getKey(global.cCancel[global.lastplayerpressed]);
 
-if(global.sfx){
-    text[2] = "SFX: Yep";
-} else {
-    text[2] = "SFX: Nope";
-}
-
-if(window_get_fullscreen()){
-    text[0] = "Fullscreen: Yep";
-} else {
-    text[0] = "Fullscreen: Nope";
-}
-
-count = getControlNum();
-for(i = 0; i &lt; count; i++){
-    if(gamepad_button_check_pressed(i,global.cUp[i])){
+if(instance_number(obj_KeyInput) == 0){
+    if(gamepad_button_check_pressed(global.lastplayerpressed,global.cUp[global.lastplayerpressed])){
         if(select &gt; 0){
             select--;
         } else {
-            select = 4;
+            select = 7;
         }
     }
-    if(gamepad_button_check_pressed(i,global.cDown[i])){
-        if(select &lt; 4){
+    if(gamepad_button_check_pressed(global.lastplayerpressed,global.cDown[global.lastplayerpressed])){
+        if(select &lt; 7){
             select++;
         } else {
             select = 0;
         }
     }
-    if(gamepad_button_check_pressed(i,global.cJump[i])){
-        if(select == 0){
-            window_set_fullscreen(!window_get_fullscreen());
-        } else if(select == 1){
-            global.music = !global.music;
-        } else if(select == 2){
-            global.sfx = !global.sfx;
-        } else if(select == 3){
-            global.lastplayerpressed = i;
-            room_goto(rm_KeyConfig);
-        } else if(select == 4){
-            room_goto(rm_Menu);
+    if(gamepad_button_check_pressed(global.lastplayerpressed,global.cJump[global.lastplayerpressed])){
+        if(select == 7){
+            room_goto(rm_Options);
+        } else {
+            input = instance_create(0,0,obj_KeyInput);
+            input.key = select;
         }
     }
 }
@@ -133,19 +119,22 @@ for(i = 0; i &lt; count; i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(1-(xpos/64));
-draw_set_color(c_white);
-draw_set_halign(fa_center);
-draw_set_valign(fa_top);
-draw_set_font(fnt_Large);
-draw_text_transformed(room_width/2-xpos,4,"Options",2,2,0);
-for(i = 0; i &lt; 5; i++){
-    if(select == i){
-        dtext = "&gt; " + text[i] + " &lt;";
-    } else {
-        dtext = text[i];
+            <string>if(instance_number(obj_KeyInput) == 0){
+    draw_set_alpha(1-(xpos/64));
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_top);
+    draw_set_font(fnt_Large);
+    draw_text_transformed(room_width/2-xpos,4,"Key Config",2,2,0);
+    draw_text_transformed(room_width/2-xpos,48,"Player " + string(global.lastplayerpressed+1),1,1,0);
+    for(i = 0; i &lt; 8; i++){
+        if(select == i){
+            dtext = "&gt; " + text[i] + " &lt;";
+        } else {
+            dtext = text[i];
+        }
+        draw_text_transformed(room_width/2-xpos,(room_height*0.3)+(i*18),dtext,0.6,0.6,0);
     }
-    draw_text(room_width/2-xpos,(room_height*0.25)+(i*24),dtext);
 }
 </string>
           </argument>

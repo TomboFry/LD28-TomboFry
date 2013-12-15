@@ -79,6 +79,10 @@ global.cD[1] = spr_PlayerBDead;
 global.c[2] = spr_PlayerC;
 global.cD[2] = spr_PlayerCDead;
 
+/* MUSIC &amp; SFX */
+
+global.music = true;
+global.sfx = true;
 </string>
           </argument>
         </arguments>

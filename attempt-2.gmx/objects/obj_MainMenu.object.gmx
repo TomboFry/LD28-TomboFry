@@ -30,6 +30,8 @@ text[1] = "Options";
 text[2] = "Exit";
 
 select = 0;
+
+xpos = 64;
 </string>
           </argument>
         </arguments>
@@ -52,7 +54,13 @@ select = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count = getControlNum();
+            <string>if(xpos &gt; 0.5){
+    xpos = xpos / 1.1;
+} else {
+    xpos = 0;
+}
+
+count = getControlNum();
 for(i = 0; i &lt; count; i++){
     if(gamepad_button_check_pressed(i,global.cUp[i])){
         if(select &gt; 0){
@@ -100,7 +108,7 @@ for(i = 0; i &lt; count; i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(1);
+            <string>draw_set_alpha(1-(xpos/64));
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
@@ -111,7 +119,7 @@ for(i = 0; i &lt; 3; i++){
     } else {
         dtext = text[i];
     }
-    draw_text(room_width/2,(room_height*0.25)+(i*24),dtext);
+    draw_text(room_width/2-xpos,(room_height*0.25)+(i*24),dtext);
 }
 </string>
           </argument>

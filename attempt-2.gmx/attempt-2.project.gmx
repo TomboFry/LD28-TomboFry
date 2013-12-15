@@ -50,13 +50,14 @@
     <objects name="Main Menu">
       <object>objects\obj_MainMenu</object>
       <object>objects\obj_CharacterSelect</object>
+      <object>objects\obj_Controls</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Controls</room>
     <room>rooms\rm_Menu</room>
     <room>rooms\rm_Level1</room>
     <room>rooms\rm_CharacterSelect</room>
-    <room>rooms\room3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

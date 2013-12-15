@@ -34,6 +34,11 @@ view_object[view] = a;
 
 gun = instance_create(x,y,obj_Gun);
 gun.obj = id;
+hp = 100;
+dead = false;
+
+hit = false;
+hitcount = 0;
 </string>
           </argument>
         </arguments>
@@ -56,31 +61,46 @@ gun.obj = id;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_free(x-pspeed,y) &amp;&amp; gamepad_button_check(view,global.cLeft[view])){
-    x -= pspeed;
-    dir = -1;
-}
-if(place_free(x+pspeed,y) &amp;&amp; gamepad_button_check(view,global.cRight[view])){
-    x += pspeed;
-    dir = 1;
-}
-if(gamepad_button_check_pressed(view,global.cFire[view])){
-    gun.xpos = 4;
-    b = instance_create(x,y+4,obj_Bullet);
-    b.obj = id;
-    b.image_xscale = dir;
-    b.direction = 90 + (90*-dir);
+            <string>if(!dead &amp;&amp; !hit){
+    if(place_free(x-pspeed,y) &amp;&amp; gamepad_button_check(view,global.cLeft[view])){
+        x -= pspeed;
+        dir = -1;
+    }
+    if(place_free(x+pspeed,y) &amp;&amp; gamepad_button_check(view,global.cRight[view])){
+        x += pspeed;
+        dir = 1;
+    }
+    if(gamepad_button_check_pressed(view,global.cFire[view])){
+        gun.xpos = 4;
+        b = instance_create(x,y+4,obj_Bullet);
+        b.obj = id;
+        b.image_xscale = dir;
+        b.direction = 90 + (90*-dir);
+    }
+    
+    if(gamepad_button_check_pressed(view,global.cJump[view]) &amp;&amp; place_meeting(x,y+1,obj_BlockParent)){
+        vspeed = -4;
+    }
+    image_xscale = dir;
+    if(gamepad_button_check(view,global.cLeft[view]) || gamepad_button_check(view,global.cRight[view])){
+        image_speed = 0.4;
+    } else {
+        image_speed = 0;
+        image_index = 0;
+    }
 }
 
-if(gamepad_button_check_pressed(view,global.cJump[view]) &amp;&amp; place_meeting(x,y+1,obj_BlockParent)){
-    vspeed = -4;
+if(hp &lt;= 0){
+    dead = true; // :L
+    sprite_index = spr_PlayerDead;
 }
-image_xscale = dir;
-if(gamepad_button_check(view,global.cLeft[view]) || gamepad_button_check(view,global.cRight[view])){
-    image_speed = 0.4;
-} else {
-    image_speed = 0;
-    image_index = 0;
+if(hit){
+    if(hitcount &lt; 3){
+        hitcount++;
+    } else {
+        hit = false;
+        hitcount = 0;
+    }
 }
 
 

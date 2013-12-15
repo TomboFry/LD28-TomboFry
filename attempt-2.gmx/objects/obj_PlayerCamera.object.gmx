@@ -84,6 +84,14 @@ if(obj != noone){
             draw_set_color(c_black);
             draw_line_width(view_xview[obj.view],view_yview[obj.view]+view_hview[obj.view],view_xview[obj.view]+view_wview[obj.view],view_yview[obj.view]+view_hview[obj.view],3);
         }
+        
+        if(obj.dead){
+            draw_set_alpha(0.3);
+            draw_set_color(c_red);
+            draw_rectangle(view_xview[obj.view],view_yview[obj.view],view_xview[obj.view]+view_wview[obj.view],view_yview[obj.view]+view_hview[obj.view],false);
+        }
+        
+        draw_set_alpha(1);
     }
 }
 </string>

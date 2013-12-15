@@ -28,22 +28,22 @@
             <string>global.cLeft[0] = gp_padl;
 global.cRight[0] = gp_padr;
 global.cJump[0] = gp_face1;
-global.cFire[0] = gp_shoulderrb;
+global.cFire[0] = gp_shoulderr;
 
 global.cLeft[1] = gp_padl;
 global.cRight[1] = gp_padr;
 global.cJump[1] = gp_face1;
-global.cFire[1] = gp_shoulderrb;
+global.cFire[1] = gp_shoulderr;
 
 global.cLeft[2] = gp_padl;
 global.cRight[2] = gp_padr;
 global.cJump[2] = gp_face1;
-global.cFire[2] = gp_shoulderrb;
+global.cFire[2] = gp_shoulderr;
 
 global.cLeft[3] = gp_padl;
 global.cRight[3] = gp_padr;
 global.cJump[3] = gp_face1;
-global.cFire[3] = gp_shoulderrb;
+global.cFire[3] = gp_shoulderr;
 
 global.gp[0] = false;
 global.gp[1] = false;

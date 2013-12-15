@@ -11,6 +11,7 @@
     <sprite>sprites\spr_Gun</sprite>
     <sprite>sprites\spr_Bullet</sprite>
     <sprite>sprites\spr_BulletWall</sprite>
+    <sprite>sprites\spr_PlayerDead</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

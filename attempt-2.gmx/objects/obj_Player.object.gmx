@@ -91,8 +91,8 @@ hitcount = 0;
 }
 
 if(hp &lt;= 0){
-    dead = true; // :L
-    sprite_index = spr_PlayerADead;
+    dead = true;
+    sprite_index = global.cD[global.p[view]];
     hp = 0;
 }
 if(hit){

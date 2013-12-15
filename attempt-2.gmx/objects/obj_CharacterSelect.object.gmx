@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>startcount = getControlNum();
+            <string>
+startcount = getControlNum();
+startcount = global.howManyPlayers;
 if(startcount == 1){
     origin = 120;
 } else if(startcount == 2){
@@ -80,16 +82,16 @@ xpos = 64;
 count = getControlNum();
 playersDone = 0;
 
-for(i = 0; i &lt; count; i++){
+for(i = 0; i &lt; global.howManyPlayers; i++){
     if(gamepad_button_check_pressed(i,global.cUp[i])){
         if(global.p[i] &gt; 0){
             global.p[i] -= 1;
         } else {
-            global.p[i] = 1;
+            global.p[i] = 2;
         }
     }
     if(gamepad_button_check_pressed(i,global.cDown[i])){
-        if(global.p[i] &lt; 1){
+        if(global.p[i] &lt; 2){
             global.p[i] += 1;
         } else {
             global.p[i] = 0;
@@ -100,13 +102,15 @@ for(i = 0; i &lt; count; i++){
             playerDone[i] = true;
         }
     }
+    if(playerDone[i]){
+        playersDone++;
+    }
     if(gamepad_button_check_pressed(i,global.cCancel[i])){
         if(playerDone[i] == true){
             playerDone[i] = false;
+        } else if(playersDone == 0) {
+            room_goto(rm_ChoosePlayers);
         }
-    }
-    if(playerDone[i]){
-        playersDone++;
     }
 }
 if(playersDone == count){
@@ -149,6 +153,17 @@ for(i = 0; i &lt; startcount; i++){
     draw_sprite_ext(global.c[global.p[i]],0,origin+(i*80)+40-xpos,128,4,4,0,-1,1-(xpos/64));
     draw_sprite_ext(spr_CharacterSelectUp,0,origin+(i*80)+40-xpos,96,4+(gamepad_button_check(i,global.cUp[i])/2),4+(gamepad_button_check(i,global.cUp[i])/2),0,-1,1-(xpos/64));
     draw_sprite_ext(spr_CharacterSelectUp,0,origin+(i*80)+40-xpos,192,4+(gamepad_button_check(i,global.cDown[i])/2),-(4+(gamepad_button_check(i,global.cDown[i])/2)),0,-1,1-(xpos/64));
+    if(playerDone[i] == true){
+        draw_text(origin+(i*80)+40-xpos,208,"Done!");
+    }
+    if(global.gp[i] == false){
+        draw_set_alpha(0.4*(1-(xpos/64)));
+        draw_set_color(c_black);
+        draw_rectangle(origin+(i*80)-xpos,48,origin+(i*80)+80-xpos,room_height,false);
+        draw_set_alpha(1-(xpos/64));
+        draw_set_color(c_white);
+        draw_text_ext_transformed(origin+(i*80)+40-xpos,120,"Please connect a gamepad!",16,80,0.8,0.8,0);
+    }
 }
 draw_set_alpha(1);
 </string>

@@ -67,12 +67,17 @@ global.p[1] = 0;
 global.p[2] = 0;
 global.p[3] = 0;
 
+global.howManyPlayers = 2;
+
 
 global.c[0] = spr_PlayerA;
 global.cD[0] = spr_PlayerADead;
 
 global.c[1] = spr_PlayerB;
 global.cD[1] = spr_PlayerBDead;
+
+global.c[2] = spr_PlayerC;
+global.cD[2] = spr_PlayerCDead;
 
 </string>
           </argument>

@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>pa = instance_create(96,136,obj_Player);
 pb = instance_create(232,136,obj_Player);
-pc = instance_create(random(room_width),random(room_height),obj_Player);
-pd = instance_create(random(room_width),random(room_height),obj_Player);
+pc = instance_create(96,80,obj_Player);
+pd = instance_create(232,80,obj_Player);
 pa.view = 0;
 pb.view = 1;
 pc.view = 2;
@@ -39,6 +39,17 @@ instance_deactivate_object(pc);
 instance_deactivate_object(pd);
 count = 0;
 step = 0;
+
+pAlive = 0;
+lastman = 0;
+
+gamestarted = false;
+gsCount = 0;
+secs = 3;
+gameended = false;
+geCount = 0;
+canExit = false;
+display_set_gui_size(320, 240);
 </string>
           </argument>
         </arguments>
@@ -71,6 +82,7 @@ for (i = 0; i &lt; gp_num; i++;){
         global.gp[i] = false;
     }
 }
+count = 3;
 if(count == 0){
     if(step &lt; room_speed*4){
         step += 1;
@@ -129,32 +141,32 @@ if(count == 0){
     view_visible[2] = true;
     view_visible[3] = false;
     
-    view_wview[0] = 160;
-    view_hview[0] = 120;
+    view_wview[0] = 80;
+    view_hview[0] = 60;
     view_wport[0] = 320;
     view_hport[0] = 240;
     view_xport[0] = 0;
     view_yport[0] = 0;
-    view_hborder[0] = 80;
-    view_vborder[0] = 60;
+    view_hborder[0] = view_wview[0]/2;
+    view_vborder[0] = view_hview[0]/2;
     
-    view_wview[1] = 160;
-    view_hview[1] = 120;
+    view_wview[1] = 80;
+    view_hview[1] = 60;
     view_wport[1] = 320;
     view_hport[1] = 240;
     view_xport[1] = 320;
     view_yport[1] = 0;
-    view_hborder[1] = 80;
-    view_vborder[1] = 60;
+    view_hborder[1] = view_wview[1]/2;
+    view_vborder[1] = view_hview[1]/2;
     
-    view_wview[2] = 160;
-    view_hview[2] = 120;
+    view_wview[2] = 80;
+    view_hview[2] = 60;
     view_wport[2] = 320;
     view_hport[2] = 240;
     view_xport[2] = 0;
     view_yport[2] = 240;
-    view_hborder[2] = 80;
-    view_vborder[2] = 60;
+    view_hborder[2] = view_wview[2]/2;
+    view_vborder[2] = view_hview[2]/2;
     instance_activate_object(pa);
     instance_activate_object(pb);
     instance_activate_object(pc);
@@ -166,41 +178,41 @@ if(count == 0){
     view_visible[2] = true;
     view_visible[3] = true;
     
-    view_wview[0] = 160;
-    view_hview[0] = 120;
+    view_wview[0] = 80;
+    view_hview[0] = 60;
     view_wport[0] = 320;
     view_hport[0] = 240;
     view_xport[0] = 0;
     view_yport[0] = 0;
-    view_hborder[0] = 80;
-    view_vborder[0] = 60;
+    view_hborder[0] = view_wview[0]/2;
+    view_vborder[0] = view_hview[0]/2;
     
-    view_wview[1] = 160;
-    view_hview[1] = 120;
+    view_wview[1] = 80;
+    view_hview[1] = 60;
     view_wport[1] = 320;
     view_hport[1] = 240;
     view_xport[1] = 320;
     view_yport[1] = 0;
-    view_hborder[1] = 80;
-    view_vborder[1] = 60;
+    view_hborder[1] = view_wview[1]/2;
+    view_vborder[1] = view_hview[1]/2;
     
-    view_wview[2] = 160;
-    view_hview[2] = 120;
+    view_wview[2] = 80;
+    view_hview[2] = 60;
     view_wport[2] = 320;
     view_hport[2] = 240;
     view_xport[2] = 0;
     view_yport[2] = 240;
-    view_hborder[2] = 80;
-    view_vborder[2] = 60;
+    view_hborder[2] = view_wview[2]/2;
+    view_vborder[2] = view_hview[2]/2;
     
-    view_wview[3] = 160;
-    view_hview[3] = 120;
+    view_wview[3] = 80;
+    view_hview[3] = 60;
     view_wport[3] = 320;
     view_hport[3] = 240;
     view_xport[3] = 320;
     view_yport[3] = 240;
-    view_hborder[3] = 80;
-    view_vborder[3] = 60;
+    view_hborder[3] = view_wview[3]/2;
+    view_vborder[3] = view_hview[3]/2;
     
     instance_activate_object(pa);
     instance_activate_object(pb);
@@ -208,6 +220,90 @@ if(count == 0){
     instance_activate_object(pd);
     step = 0;
     
+}
+
+if(!gamestarted){
+    if(gsCount &lt; room_speed * 3){
+        gsCount++;
+    } else {
+        gsCount = 0;
+        gamestarted = true;
+    }
+    if((180-gsCount) mod 60 == 0){
+        secs -= 1;
+    }
+} else {
+    pAlive = count;
+    with(obj_Player){
+        if(dead){
+            obj_cRoom.pAlive--;
+        } else {
+            obj_cRoom.lastman = view;
+        }
+    }
+    if(pAlive == 1){
+        gameended = true;
+    }
+}
+if(gameended){
+    if(geCount &lt; room_speed){
+        geCount++;
+    } else {
+        geCount = room_speed;
+        canExit = true;
+    }
+}
+if(canExit){
+    for(j = 0; j &lt; count; j++){
+        if(gamepad_button_check_pressed(j,global.cJump[j])){
+            room_goto(rm_Menu);
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!gamestarted){
+    draw_set_alpha(0.5);
+    draw_set_color(c_black);
+    draw_rectangle(0,0,320,240,false);
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    draw_set_font(fnt_Large);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text_transformed(160,120,string(secs),4/((((180-gsCount) mod 60)+1)/4),4/((((180-gsCount) mod 60)+1)/4),0);
+}
+
+if(gameended){
+    draw_set_alpha(0.5);
+    draw_set_color(c_black);
+    draw_rectangle(0,0,320,240,false);
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    draw_set_font(fnt_Large);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text_transformed(160,120,"Player " + string(lastman+1) + " wins!",(1/(((60-geCount)+1)/8))/4,(1/(((60-geCount)+1)/8))/4,0);
 }
 </string>
           </argument>

@@ -61,7 +61,7 @@ hitcount = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!dead &amp;&amp; !hit){
+            <string>if(!dead &amp;&amp; !hit &amp;&amp; obj_cRoom.gamestarted &amp;&amp; !obj_cRoom.gameended){
     if(place_free(x-pspeed,y) &amp;&amp; gamepad_button_check(view,global.cLeft[view])){
         x -= pspeed;
         dir = -1;
@@ -116,6 +116,36 @@ if(vspeed &gt; 8){
 instance_activate_object(a);
 instance_activate_object(gun);
 view_object[view] = a;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_HealthPickup">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(hp != 100){
+    if(hp &lt; 80){
+        hp+=20;
+    } else {
+        hp = 100;
+    }
+    with(other) instance_destroy();
+}
 </string>
           </argument>
         </arguments>

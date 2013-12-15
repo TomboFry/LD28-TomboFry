@@ -191,6 +191,7 @@
     <instance objName="obj_Block8" x="176" y="64" name="inst_79768BC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="184" y="64" name="inst_C4056530" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="144" y="64" name="inst_991FF948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_HealthPickup" x="168" y="88" name="inst_E62AE7EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

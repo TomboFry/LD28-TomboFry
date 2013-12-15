@@ -12,11 +12,14 @@
     <sprite>sprites\spr_Bullet</sprite>
     <sprite>sprites\spr_BulletWall</sprite>
     <sprite>sprites\spr_PlayerDead</sprite>
+    <sprite>sprites\spr_BloodParticles</sprite>
+    <sprite>sprites\spr_HealthPickup</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <fonts name="fonts">
     <font>fonts\fnt_Main</font>
+    <font>fonts\fnt_Large</font>
   </fonts>
   <objects name="objects">
     <objects name="Controllers">
@@ -31,9 +34,11 @@
     <object>objects\obj_Player</object>
     <object>objects\obj_Gun</object>
     <object>objects\obj_Bullet</object>
+    <object>objects\obj_HealthPickup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Level1</room>
+    <room>rooms\rm_Menu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -79,10 +79,19 @@
             <string>//
 if(obj != noone){
     if(view_current == obj.view){
-        if(obj_cRoom.count == 2){
-            draw_set_alpha(1);
-            draw_set_color(c_black);
-            draw_line_width(view_xview[obj.view],view_yview[obj.view]+view_hview[obj.view],view_xview[obj.view]+view_wview[obj.view],view_yview[obj.view]+view_hview[obj.view],3);
+    
+        draw_set_alpha(1);
+        draw_set_color(c_black);
+        
+        if(obj_cRoom.count &gt;= 2){
+            draw_line_width(view_xview[obj.view],view_yview[obj.view]+view_hview[obj.view]-1,view_xview[obj.view]+view_wview[obj.view],view_yview[obj.view]+view_hview[obj.view]-1,2);
+        }
+        if(obj_cRoom.count &gt;= 3) {
+            draw_line_width(view_xview[obj.view]+view_wview[obj.view]-1,view_yview[obj.view],view_xview[obj.view]+view_wview[obj.view]-1,view_yview[obj.view]+view_hview[obj.view],2);
+        }
+        
+        if(obj.hp &lt; 90){
+            draw_sprite_ext(spr_BloodParticles,((90-obj.hp)/90)*sprite_get_number(spr_BloodParticles),view_xview[obj.view],view_yview[obj.view],view_wview[obj.view]/80,view_wview[obj.view]/80,0,-1,1);
         }
         
         if(obj.dead){

@@ -209,6 +209,11 @@
     <instance objName="obj_Block8" x="168" y="192" name="inst_87BACF41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="160" y="208" name="inst_FDBB9A0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="152" y="208" name="inst_3114AE4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Lights" x="0" y="32" name="inst_2B40D3B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="233" y="131" name="inst_67AA0DED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="174" y="99" name="inst_59B6CBBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="145" y="99" name="inst_2993760A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="86" y="131" name="inst_EEBDC26C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Tileset" x="72" y="56" w="8" h="8" xo="40" yo="0" id="10000015" name="inst_359EC78F" depth="100000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

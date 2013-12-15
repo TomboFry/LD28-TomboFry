@@ -59,6 +59,8 @@
       <object>objects\obj_Bullet</object>
       <object>objects\obj_HealthPickup</object>
       <object>objects\obj_TextPopup</object>
+      <object>objects\obj_Torch</object>
+      <object>objects\obj_Lights</object>
     </objects>
     <objects name="Main Menu">
       <object>objects\obj_MainMenu</object>

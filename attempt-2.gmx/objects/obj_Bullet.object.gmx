@@ -73,7 +73,7 @@ speed = 8;
           <argument>
             <kind>1</kind>
             <string>if(other != obj){
-    other.hp -= 10;
+    other.hp -= 20;
     other.hit = true;
     instance_destroy();
 }

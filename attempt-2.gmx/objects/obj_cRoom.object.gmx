@@ -82,7 +82,7 @@ for (i = 0; i &lt; gp_num; i++;){
         global.gp[i] = false;
     }
 }
-count = 3;
+//count = 3;
 if(count == 0){
     if(step &lt; room_speed*4){
         step += 1;

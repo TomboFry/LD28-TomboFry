@@ -93,6 +93,7 @@ hitcount = 0;
 if(hp &lt;= 0){
     dead = true; // :L
     sprite_index = spr_PlayerDead;
+    hp = 0;
 }
 if(hit){
     if(hitcount &lt; 3){
@@ -139,11 +140,12 @@ view_object[view] = a;
           <argument>
             <kind>1</kind>
             <string>if(hp != 100){
-    if(hp &lt; 80){
-        hp+=20;
+    if(hp &lt; 60){
+        hp+=40;
     } else {
         hp = 100;
     }
+    textPopup(x,y,"+2");
     with(other) instance_destroy();
 }
 </string>

@@ -14,9 +14,13 @@
     <sprite>sprites\spr_PlayerDead</sprite>
     <sprite>sprites\spr_BloodParticles</sprite>
     <sprite>sprites\spr_HealthPickup</sprite>
+    <sprite>sprites\spr_Health</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\textPopup.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Main</font>
     <font>fonts\fnt_Large</font>
@@ -35,6 +39,7 @@
     <object>objects\obj_Gun</object>
     <object>objects\obj_Bullet</object>
     <object>objects\obj_HealthPickup</object>
+    <object>objects\obj_TextPopup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Level1</room>

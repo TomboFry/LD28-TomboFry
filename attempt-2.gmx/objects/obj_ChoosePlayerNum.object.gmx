@@ -135,6 +135,9 @@ draw_sprite_ext(spr_CharacterSelectUp,0,(room_width/2)-xpos,96,4+(upscale/2),4+(
 draw_sprite_ext(spr_CharacterSelectUp,0,(room_width/2)-xpos,192,4+(downscale/2),-(4+(downscale/2)),0,-1,1-(xpos/64));
     
 draw_set_alpha(1);
+draw_set_font(fnt_Main);
+draw_set_valign(fa_bottom);
+draw_text_transformed(room_width/2,room_height-4,"[Up/Down] Change Players  [Action] Confirm Players  [Cancel] Back",1,1,0);
 </string>
           </argument>
         </arguments>

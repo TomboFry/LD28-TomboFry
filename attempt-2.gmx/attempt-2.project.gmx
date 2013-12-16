@@ -109,6 +109,7 @@
     <rooms name="Maps">
       <room>rooms\rm_Level1</room>
       <room>rooms\rm_Level2</room>
+      <room>rooms\rm_Level3</room>
       <room>rooms\rm_Champion</room>
     </rooms>
   </rooms>

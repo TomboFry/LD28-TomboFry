@@ -32,6 +32,7 @@ global.cDown[0] = gp_padd;
 global.cJump[0] = gp_face1;
 global.cCancel[0] = gp_face2;
 global.cFire[0] = gp_shoulderr;
+global.cPause[0] = gp_start;
 
 global.cLeft[1] = gp_padl;
 global.cRight[1] = gp_padr;
@@ -40,6 +41,7 @@ global.cDown[1] = gp_padd;
 global.cJump[1] = gp_face1;
 global.cCancel[1] = gp_face2;
 global.cFire[1] = gp_shoulderr;
+global.cPause[1] = gp_start;
 
 global.cLeft[2] = gp_padl;
 global.cRight[2] = gp_padr;
@@ -48,6 +50,7 @@ global.cDown[2] = gp_padd;
 global.cJump[2] = gp_face1;
 global.cCancel[2] = gp_face2;
 global.cFire[2] = gp_shoulderr;
+global.cPause[2] = gp_start;
 
 global.cLeft[3] = gp_padl;
 global.cRight[3] = gp_padr;
@@ -56,6 +59,7 @@ global.cDown[3] = gp_padd;
 global.cJump[3] = gp_face1;
 global.cCancel[3] = gp_face2;
 global.cFire[3] = gp_shoulderr;
+global.cPause[3] = gp_start;
 
 global.gp[0] = false;
 global.gp[1] = false;
@@ -99,6 +103,12 @@ global.lastplayerpressed = 0; // Index of the player who last pressed a key
 
 // This will overwrite any previously written settings if the config file exists
 loadSettings();
+
+global.isPaused = false;
+select = 0;
+text[0] = "Resume";
+text[1] = "Go to main menu";
+text[2] = "Quit Game";
 </string>
           </argument>
         </arguments>
@@ -126,6 +136,47 @@ loadSettings();
 }
 if(keyboard_check_pressed(vk_escape)){
     game_end();
+}
+count = getControlNum();
+for(i = 0; i &lt; count; i ++){
+    if(gamepad_button_check_pressed(i,global.cPause[i])){
+        global.isPaused = !global.isPaused;
+    }
+}
+if(global.isPaused){
+    instance_deactivate_all(true);
+    for(i = 0; i &lt; count; i ++){
+        if(gamepad_button_check_pressed(i,global.cUp[i])){
+            if(select &gt; 0){
+                select--;
+            } else {
+                select = 2;
+            }
+        }
+        if(gamepad_button_check_pressed(i,global.cDown[i])){
+            if(select &lt; 2){
+                select++;
+            } else {
+                select = 0;
+            }
+        }
+        if(gamepad_button_check_pressed(i,global.cJump[i])){
+            if(select == 0){
+                global.isPaused = false;
+            } else if(select == 1){
+                global.roundNum = 0;
+                global.rounds[0] = 0;
+                global.rounds[1] = 0;
+                global.rounds[2] = 0;
+                global.isPaused = false;
+                room_goto(rm_Menu);
+            } else if(select== 2){
+                game_end();
+            }
+        }
+    }
+} else {
+    instance_activate_all();
 }
 </string>
           </argument>
@@ -202,6 +253,46 @@ if(keyboard_check_pressed(vk_escape)){
           <argument>
             <kind>1</kind>
             <string>saveSettings();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.isPaused){
+display_set_gui_size(320,240);
+draw_set_alpha(0.4);
+draw_set_color(c_black);
+draw_rectangle(0,0,320,240,false);
+draw_set_alpha(1);
+draw_set_color(c_white);
+draw_set_font(fnt_Main);
+draw_set_halign(fa_center);
+for(j = 0; j &lt; 3; j++){
+    if(j == select){
+        dtext = "&gt; " + text[j] + " &lt;";
+    } else {
+        dtext = text[j];
+    }
+    draw_text(160,60+(j*20),dtext);
+}
+}
 </string>
           </argument>
         </arguments>

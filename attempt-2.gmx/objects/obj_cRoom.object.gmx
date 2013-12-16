@@ -35,6 +35,11 @@
     pbx = 304; pby = 192;
     pcx = 80; pcy = 112;
     pdx = 320; pdy = 112;
+} else if(room == rm_Level3){
+    pax = 80; pay = 192;
+    pbx = 224; pby = 192;
+    pcx = 112; pcy = 136;
+    pdx = 192; pdy = 136;
 }
 
 pa = instance_create(pax,pay,obj_Player);

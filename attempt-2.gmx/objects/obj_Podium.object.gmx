@@ -99,16 +99,16 @@ if(a &gt; b &amp;&amp; a &gt; c &amp;&amp; a &gt; d){
         ypos = 0;
         step = 1;
     }
-} else {
-    count = getControlNum();
-    for(i = 0; i &lt; count; i++){
-        if(gamepad_button_check_pressed(i,global.cJump[i])){
-            global.roundNum = 0;
-            global.rounds[0] = 0;
-            global.rounds[1] = 0;
-            global.rounds[2] = 0;
-            room_goto(rm_Menu);
-        }
+}
+
+count = getControlNum();
+for(i = 0; i &lt; count; i++){
+    if(gamepad_button_check_pressed(i,global.cJump[i])){
+        global.roundNum = 0;
+        global.rounds[0] = 0;
+        global.rounds[1] = 0;
+        global.rounds[2] = 0;
+        room_goto(rm_Menu);
     }
 }
 

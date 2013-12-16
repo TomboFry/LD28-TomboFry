@@ -157,22 +157,25 @@ for(i = 0; i &lt; startcount; i++){
     //draw_rectangle(origin+(i*80),48,origin+(i*80)+80,room_height,false);
     draw_set_alpha(1-(xpos/64));
     draw_text(origin+(i*80)+40-xpos,56,"P" + string(i+1));
-    draw_sprite_ext(global.c[global.p[i]],0,origin+(i*80)+40-xpos,128,4,4,0,-1,1-(xpos/64));
-    draw_sprite_ext(spr_CharacterSelectUp,0,origin+(i*80)+40-xpos,96,4+(gamepad_button_check(i,global.cUp[i])/2),4+(gamepad_button_check(i,global.cUp[i])/2),0,-1,1-(xpos/64));
-    draw_sprite_ext(spr_CharacterSelectUp,0,origin+(i*80)+40-xpos,192,4+(gamepad_button_check(i,global.cDown[i])/2),-(4+(gamepad_button_check(i,global.cDown[i])/2)),0,-1,1-(xpos/64));
+    draw_sprite_ext(global.c[global.p[i]],0,origin+(i*80)+40-xpos,120,4,4,0,-1,1-(xpos/64));
+    draw_sprite_ext(spr_CharacterSelectUp,0,origin+(i*80)+40-xpos,90,4+(gamepad_button_check(i,global.cUp[i])/2),4+(gamepad_button_check(i,global.cUp[i])/2),0,-1,1-(xpos/64));
+    draw_sprite_ext(spr_CharacterSelectUp,0,origin+(i*80)+40-xpos,180,4+(gamepad_button_check(i,global.cDown[i])/2),-(4+(gamepad_button_check(i,global.cDown[i])/2)),0,-1,1-(xpos/64));
     if(playerDone[i] == true){
-        draw_text(origin+(i*80)+40-xpos,208,"Done!");
+        draw_text(origin+(i*80)+40-xpos,196,"Done!");
     }
     if(global.gp[i] == false){
         draw_set_alpha(0.4*(1-(xpos/64)));
         draw_set_color(c_black);
-        draw_rectangle(origin+(i*80)-xpos,48,origin+(i*80)+80-xpos,room_height,false);
+        draw_rectangle(origin+(i*80)-xpos,48,origin+(i*80)+80-xpos,room_height-16,false);
         draw_set_alpha(1-(xpos/64));
         draw_set_color(c_white);
         draw_text_ext_transformed(origin+(i*80)+40-xpos,120,"Please connect a gamepad!",16,80,0.8,0.8,0);
     }
 }
 draw_set_alpha(1);
+draw_set_font(fnt_Main);
+draw_set_valign(fa_bottom);
+draw_text_transformed(room_width/2,room_height-4,"[Up/Down] Change Character  [Action] Confirm Character#[Cancel] De-confirm character / Go back",1,1,0);
 </string>
           </argument>
         </arguments>

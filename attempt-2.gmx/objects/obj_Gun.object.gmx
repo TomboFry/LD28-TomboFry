@@ -52,8 +52,10 @@
     x = obj.x + obj.dir + (xpos*-obj.dir);
     y = obj.y + 4;
     image_xscale = obj.dir;
+    image_alpha = 1;
 } else {
-    instance_deactivate_object(self);
+    image_alpha = 0;
+    instance_deactivate_object(id);
 }
 
 if(xpos &gt; 0.2){

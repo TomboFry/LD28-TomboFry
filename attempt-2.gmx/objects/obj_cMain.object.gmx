@@ -216,7 +216,7 @@ if(global.isPaused){
             sound_stop_all();
             sound_loop(mus_Map1);
         }
-    } else if(room == rm_Level2){
+    } else if(room == rm_Level2 || room == rm_Level3){
         if(!sound_isplaying(mus_Map2)){
             sound_stop_all();
             sound_loop(mus_Map2);

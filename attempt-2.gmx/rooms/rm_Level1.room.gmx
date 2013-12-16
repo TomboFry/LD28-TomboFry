@@ -121,7 +121,6 @@
     <instance objName="obj_Block8" x="72" y="152" name="inst_0ADB42E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="72" y="160" name="inst_50895CB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="72" y="168" name="inst_D2323940" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_cRoom" x="0" y="8" name="inst_0A800C4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="80" y="144" name="inst_3CAFA3B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="88" y="144" name="inst_BAB04FEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block8" x="96" y="144" name="inst_5DA33026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -214,6 +213,7 @@
     <instance objName="obj_Torch" x="174" y="99" name="inst_59B6CBBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="145" y="99" name="inst_2993760A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="86" y="131" name="inst_EEBDC26C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_cRoom" x="0" y="16" name="inst_9AB0D3DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Tileset" x="72" y="56" w="8" h="8" xo="40" yo="0" id="10000015" name="inst_359EC78F" depth="100000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

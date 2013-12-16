@@ -32,6 +32,9 @@ xpos = 64;
 upscale = 0;
 
 downscale = 0;
+
+background_xscale[0] = 2;
+background_yscale[0] = 2;
 </string>
           </argument>
         </arguments>
@@ -69,6 +72,7 @@ for(i = 0; i &lt; count; i++){
         } else {
             global.howManyPlayers = 4;
         }
+        if(global.sfx) sound_play(snd_Select);
     }
     if(gamepad_button_check_pressed(i,global.cDown[i])){
         if(global.howManyPlayers &lt; 4){
@@ -76,6 +80,7 @@ for(i = 0; i &lt; count; i++){
         } else {
             global.howManyPlayers = 2;
         }
+        if(global.sfx) sound_play(snd_Select);
     }
     if(gamepad_button_check(i,global.cDown[i])){
         downscale = 1;
@@ -94,6 +99,7 @@ for(i = 0; i &lt; count; i++){
         room_goto(rm_Menu);
     }
 }
+background_x[0] = 240-((xpos)/3);
 </string>
           </argument>
         </arguments>
@@ -121,7 +127,7 @@ draw_set_color(c_white);
 draw_set_font(fnt_Large);
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
-draw_text((room_width/2)-xpos,4,"How many players?");
+draw_text_transformed((room_width/2)-xpos,4,"How many players?",1.5,1.5,0);
 
 draw_set_alpha(1-(xpos/64));
 draw_text_transformed((room_width/2)-xpos,128,global.howManyPlayers,2,2,0);

@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>obj = noone;
 speed = 8;
+
+if(global.sfx) sound_play(snd_Shoot);
 </string>
           </argument>
         </arguments>
@@ -52,6 +54,7 @@ speed = 8;
             <string>if(other != obj &amp;&amp; !other.dead){
     other.hp -= 20;
     other.hit = true;
+    if(global.sfx) sound_play(choose(snd_Hurt1,snd_Hurt2));
     instance_destroy();
 }
 </string>

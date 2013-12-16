@@ -32,6 +32,8 @@ a = instance_create(x,y-8,obj_PlayerCamera);
 a.obj = id;
 view_object[view] = a;
 
+image_speed = 0;
+
 gun = instance_create(x,y,obj_Gun);
 gun.obj = id;
 hp = 100;
@@ -82,6 +84,7 @@ hitlava = false;
     
     if(gamepad_button_check_pressed(view,global.cJump[view]) &amp;&amp; place_meeting(x,y+1,obj_BlockParent)){
         vspeed = -4;
+        if(global.sfx) sound_play(snd_Jump);
     }
     image_xscale = dir;
     if(gamepad_button_check(view,global.cLeft[view]) || gamepad_button_check(view,global.cRight[view])){
@@ -110,6 +113,7 @@ if(place_meeting(x,y+2,obj_LavaBottom)){
         hp -= 20;
         if(hp &gt; 0){
             vspeed = -7;
+            if(global.sfx) sound_play(choose(snd_Hurt1,snd_Hurt2));
         }
         hitlava = true;
     }
@@ -117,6 +121,9 @@ if(place_meeting(x,y+2,obj_LavaBottom)){
     hitlava = false;
 }
 
+if(y &gt; room_height){
+    y = -8;
+}
 
 if(place_free(x,y+1)){
     gravity = 0.25;
@@ -160,6 +167,7 @@ view_object[view] = a;
     }
     textPopup(x,y,"+2");
     with(other) instance_destroy();
+    if(global.sfx) sound_play(snd_Health);
 }
 </string>
           </argument>

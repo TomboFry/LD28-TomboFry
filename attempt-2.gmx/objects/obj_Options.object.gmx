@@ -34,6 +34,9 @@ text[4] = "Back to main menu";
 select = 0;
 
 xpos = 64;
+
+background_xscale[0] = 2;
+background_yscale[0] = 2;
 </string>
           </argument>
         </arguments>
@@ -64,8 +67,15 @@ xpos = 64;
 
 if(global.music){
     text[1] = "Music: Yep";
+    if(!sound_isplaying(mus_MainMenu)){
+        sound_stop_all();
+        sound_loop(mus_MainMenu);
+    }
 } else {
     text[1] = "Music: Nope";
+    if(sound_isplaying(mus_MainMenu)){
+        sound_stop(mus_MainMenu);
+    }
 }
 
 if(global.sfx){
@@ -88,6 +98,7 @@ for(i = 0; i &lt; count; i++){
         } else {
             select = 4;
         }
+        if(global.sfx) sound_play(snd_Select);
     }
     if(gamepad_button_check_pressed(i,global.cDown[i])){
         if(select &lt; 4){
@@ -95,6 +106,7 @@ for(i = 0; i &lt; count; i++){
         } else {
             select = 0;
         }
+        if(global.sfx) sound_play(snd_Select);
     }
     if(gamepad_button_check_pressed(i,global.cJump[i])){
         if(select == 0){
@@ -111,6 +123,8 @@ for(i = 0; i &lt; count; i++){
         }
     }
 }
+
+background_x[0] = 240-((xpos)/3);
 </string>
           </argument>
         </arguments>

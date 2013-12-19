@@ -275,7 +275,7 @@ if(gameended){
 }
 if(canExit){
     for(j = 0; j &lt; count; j++){
-        if(gamepad_button_check_pressed(j,global.cJump[j])){
+        if(gamepad_button_check_pressed(j,global.cJump[j]) || keyboard_check_pressed(global.ckFire[j])){
             global.rounds[global.roundNum] = lastman;
             if(global.roundNum &lt; 2){
                 global.roundNum++;

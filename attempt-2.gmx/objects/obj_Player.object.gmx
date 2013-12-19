@@ -66,15 +66,15 @@ hitlava = false;
           <argument>
             <kind>1</kind>
             <string>if(!dead &amp;&amp; !hit &amp;&amp; obj_cRoom.gamestarted &amp;&amp; !obj_cRoom.gameended){
-    if(place_free(x-pspeed,y) &amp;&amp; gamepad_button_check(view,global.cLeft[view])){
+    if(place_free(x-pspeed,y) &amp;&amp; (gamepad_button_check(view,global.cLeft[view])||keyboard_check(global.ckLeft[view]))){
         x -= pspeed;
         dir = -1;
     }
-    if(place_free(x+pspeed,y) &amp;&amp; gamepad_button_check(view,global.cRight[view])){
+    if(place_free(x+pspeed,y) &amp;&amp; (gamepad_button_check(view,global.cRight[view])||keyboard_check(global.ckRight[view]))){
         x += pspeed;
         dir = 1;
     }
-    if(gamepad_button_check_pressed(view,global.cFire[view])){
+    if(gamepad_button_check_pressed(view,global.cFire[view]) || keyboard_check_pressed(global.ckFire[view])){
         gun.xpos = 4;
         b = instance_create(x,y+4,obj_Bullet);
         b.obj = id;
@@ -82,12 +82,12 @@ hitlava = false;
         b.direction = 90 + (90*-dir);
     }
     
-    if(gamepad_button_check_pressed(view,global.cJump[view]) &amp;&amp; place_meeting(x,y+1,obj_BlockParent)){
+    if((gamepad_button_check_pressed(view,global.cJump[view]) || keyboard_check_pressed(global.ckUp[view])) &amp;&amp; place_meeting(x,y+1,obj_BlockParent)){
         vspeed = -4;
         if(global.sfx) sound_play(snd_Jump);
     }
     image_xscale = dir;
-    if(gamepad_button_check(view,global.cLeft[view]) || gamepad_button_check(view,global.cRight[view])){
+    if(gamepad_button_check(view,global.cLeft[view]) || gamepad_button_check(view,global.cRight[view]) || keyboard_check(global.ckLeft[view]) || keyboard_check(global.ckRight[view])){
         image_speed = 0.4;
     } else {
         image_speed = 0;

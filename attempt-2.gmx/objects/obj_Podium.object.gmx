@@ -100,18 +100,28 @@ if(a &gt; b &amp;&amp; a &gt; c &amp;&amp; a &gt; d){
         step = 1;
     }
 }
-
-count = getControlNum();
-for(i = 0; i &lt; count; i++){
-    if(gamepad_button_check_pressed(i,global.cJump[i])){
-        global.roundNum = 0;
-        global.rounds[0] = 0;
-        global.rounds[1] = 0;
-        global.rounds[2] = 0;
-        room_goto(rm_Menu);
+if(!global.usingKeyboard){
+    count = getControlNum();
+    for(i = 0; i &lt; count; i++){
+        if(gamepad_button_check_pressed(i,global.cJump[i])){
+            global.roundNum = 0;
+            global.rounds[0] = 0;
+            global.rounds[1] = 0;
+            global.rounds[2] = 0;
+            room_goto(rm_Menu);
+        }
+    }
+} else {
+    for(i = 0; i &lt; 2; i++){
+        if(keyboard_check_pressed(global.ckFire[i])){
+            global.roundNum = 0;
+            global.rounds[0] = 0;
+            global.rounds[1] = 0;
+            global.rounds[2] = 0;
+            room_goto(rm_Menu);
+        }
     }
 }
-
 view_yview[0] = 52-ypos;
 </string>
           </argument>

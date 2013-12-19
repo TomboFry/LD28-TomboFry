@@ -63,8 +63,13 @@ background_yscale[0] = 2;
     xpos = 0;
 }
 
-count = getControlNum();
+if(global.usingKeyboard){
+    global.howManyPlayers = 2;
+    room_goto(rm_CharacterSelect);
+}
+
 playersDone = 0;
+count = getControlNum();
 for(i = 0; i &lt; count; i++){
     if(gamepad_button_check_pressed(i,global.cUp[i])){
         if(global.howManyPlayers &gt; 2){

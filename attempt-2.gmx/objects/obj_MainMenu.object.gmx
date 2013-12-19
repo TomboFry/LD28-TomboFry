@@ -62,32 +62,61 @@ background_yscale[0] = 2;
 } else {
     xpos = 0;
 }
-
-count = getControlNum();
-for(i = 0; i &lt; count; i++){
-    if(gamepad_button_check_pressed(i,global.cUp[i])){
-        if(select &gt; 0){
-            select--;
-        } else {
-            select = 2;
+if(!global.usingKeyboard){
+    count = getControlNum();
+    for(i = 0; i &lt; count; i++){
+        if(gamepad_button_check_pressed(i,global.cUp[i])){
+            if(select &gt; 0){
+                select--;
+            } else {
+                select = 2;
+            }
+            if(global.sfx) sound_play(snd_Select);
         }
-        if(global.sfx) sound_play(snd_Select);
-    }
-    if(gamepad_button_check_pressed(i,global.cDown[i])){
-        if(select &lt; 2){
-            select++;
-        } else {
-            select = 0;
+        if(gamepad_button_check_pressed(i,global.cDown[i])){
+            if(select &lt; 2){
+                select++;
+            } else {
+                select = 0;
+            }
+            if(global.sfx) sound_play(snd_Select);
         }
-        if(global.sfx) sound_play(snd_Select);
+        if(gamepad_button_check_pressed(i,global.cJump[i])){
+            if(select == 0){
+                room_goto(rm_ChoosePlayers);
+            } else if(select == 1){
+                room_goto(rm_Options);
+            } else if(select == 2){
+                game_end();
+            }
+        }
     }
-    if(gamepad_button_check_pressed(i,global.cJump[i])){
-        if(select == 0){
-            room_goto(rm_ChoosePlayers);
-        } else if(select == 1){
-            room_goto(rm_Options);
-        } else if(select == 2){
-            game_end();
+} else {
+    for(i = 0; i &lt; 2; i++){
+        if(keyboard_check_pressed(global.ckUp[i])){
+            if(select &gt; 0){
+                select--;
+            } else {
+                select = 2;
+            }
+            if(global.sfx) sound_play(snd_Select);
+        }
+        if(keyboard_check_pressed(global.ckDown[i])){
+            if(select &lt; 2){
+                select++;
+            } else {
+                select = 0;
+            }
+            if(global.sfx) sound_play(snd_Select);
+        }
+        if(keyboard_check_pressed(global.ckFire[i])){
+            if(select == 0){
+                room_goto(rm_ChoosePlayers);
+            } else if(select == 1){
+                room_goto(rm_Options);
+            } else if(select == 2){
+                game_end();
+            }
         }
     }
 }

@@ -73,6 +73,22 @@ global.p[3] = 0;
 
 global.howManyPlayers = 2;
 
+global.usingKeyboard = false;
+
+global.ckUp[0] = ord('W');
+global.ckDown[0] = ord('S');
+global.ckLeft[0] = ord('A');
+global.ckRight[0] = ord('D');
+global.ckFire[0] = ord('Q');
+global.ckCancel[0] = ord('E');
+
+global.ckUp[1] = vk_up;
+global.ckDown[1] = vk_down;
+global.ckLeft[1] = vk_left;
+global.ckRight[1] = vk_right;
+global.ckFire[1] = vk_rcontrol;
+global.ckCancel[1] = vk_delete;
+
 
 global.c[0] = spr_PlayerA;
 global.cD[0] = spr_PlayerADead;
@@ -134,49 +150,88 @@ text[2] = "Quit Game";
             <string>if(keyboard_check_pressed(vk_f4)){
     window_set_fullscreen(!window_get_fullscreen());
 }
-if(keyboard_check_pressed(vk_escape)){
-    game_end();
-}
-count = getControlNum();
-for(i = 0; i &lt; count; i ++){
-    if(gamepad_button_check_pressed(i,global.cPause[i])){
-        global.isPaused = !global.isPaused;
-    }
-}
-if(global.isPaused){
-    instance_deactivate_all(true);
+display_set_gui_size(320,240);
+if(!global.usingKeyboard){
+    count = getControlNum();
     for(i = 0; i &lt; count; i ++){
-        if(gamepad_button_check_pressed(i,global.cUp[i])){
-            if(select &gt; 0){
-                select--;
-            } else {
-                select = 2;
+        if(gamepad_button_check_pressed(i,global.cPause[i])){
+            global.isPaused = !global.isPaused;
+        }
+    }
+    if(global.isPaused){
+        instance_deactivate_all(true);
+        for(i = 0; i &lt; count; i ++){
+            if(gamepad_button_check_pressed(i,global.cUp[i])){
+                if(select &gt; 0){
+                    select--;
+                } else {
+                    select = 2;
+                }
+            }
+            if(gamepad_button_check_pressed(i,global.cDown[i])){
+                if(select &lt; 2){
+                    select++;
+                } else {
+                    select = 0;
+                }
+            }
+            if(gamepad_button_check_pressed(i,global.cJump[i])){
+                if(select == 0){
+                    global.isPaused = false;
+                } else if(select == 1){
+                    global.roundNum = 0;
+                    global.rounds[0] = 0;
+                    global.rounds[1] = 0;
+                    global.rounds[2] = 0;
+                    global.isPaused = false;
+                    room_goto(rm_Menu);
+                } else if(select== 2){
+                    game_end();
+                }
             }
         }
-        if(gamepad_button_check_pressed(i,global.cDown[i])){
-            if(select &lt; 2){
-                select++;
-            } else {
-                select = 0;
-            }
-        }
-        if(gamepad_button_check_pressed(i,global.cJump[i])){
-            if(select == 0){
-                global.isPaused = false;
-            } else if(select == 1){
-                global.roundNum = 0;
-                global.rounds[0] = 0;
-                global.rounds[1] = 0;
-                global.rounds[2] = 0;
-                global.isPaused = false;
-                room_goto(rm_Menu);
-            } else if(select== 2){
-                game_end();
-            }
-        }
+    } else {
+        instance_activate_all();
     }
 } else {
-    instance_activate_all();
+    if(keyboard_check_pressed(vk_escape)){
+        global.isPaused = !global.isPaused;
+    }
+    if(global.isPaused){
+        instance_deactivate_all(true);
+        for(i = 0; i &lt; 2; i ++){
+            if(keyboard_check_pressed(global.ckUp[i])){
+                if(select &gt; 0){
+                    select--;
+                } else {
+                    select = 2;
+                }
+            }
+            if(keyboard_check_pressed(global.ckDown[i])){
+                if(select &lt; 2){
+                    select++;
+                } else {
+                    select = 0;
+                }
+            }
+            if(keyboard_check_pressed(global.ckFire[i])){
+                if(select == 0){
+                    global.isPaused = false;
+                } else if(select == 1){
+                    global.roundNum = 0;
+                    global.rounds[0] = 0;
+                    global.rounds[1] = 0;
+                    global.rounds[2] = 0;
+                    global.isPaused = false;
+                    room_goto(rm_Menu);
+                } else if(select== 2){
+                    game_end();
+                }
+            }
+        }
+    } else {
+        instance_activate_all();
+    }
 }
 </string>
           </argument>
@@ -276,7 +331,6 @@ if(global.isPaused){
           <argument>
             <kind>1</kind>
             <string>if(global.isPaused){
-display_set_gui_size(320,240);
 draw_set_alpha(0.4);
 draw_set_color(c_black);
 draw_rectangle(0,0,320,240,false);
